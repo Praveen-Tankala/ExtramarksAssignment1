@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Display Content</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+</head>
+<body>
+<div class="container" th:object="${newEntry}">
+	
+			<h5>Details saved successfully</h5>
+            Name: <span th:text=${newEntry.name}></span><br>
+            Email: <span th:text=${newEntry.email}></span><br>
+            Mobile: <span th:text=${newEntry.phone}></span><br>
+            State: <span th:text=${newEntry.state}></span><br>
+            Gender: <span th:text=${newEntry.gender}></span><br>
+            Skills: <span th:text=${newEntry.skills}></span><br>
+            Image: <span th:text=${newEntry.image}></span><br>
+            
+            
+           <p>Click here for edit:</p>
+             <a th:href="@{/edit/{id}(id=${newEntry.id})}" class="btn btn-primary"><button>Edit</button></a>
+             
+    </div>
+</body>
+</html>

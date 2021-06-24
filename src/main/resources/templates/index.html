@@ -1,0 +1,113 @@
+<!Doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+   <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <title>Add New Entry</title>
+    <script language="javascript">
+		function validate()
+		{
+		var msg="";
+		
+		//getting name from register documnet by name
+		var name=document.register.name.value;
+		var run=new RegExp("^[A-Za-z]{1,26}$");
+		
+		var email=document.register.email.value;
+		var remail=new RegExp("[\\w]+@[\\w]+.com");
+		
+		var phone=document.register.phone.value;
+		var rphone=new RegExp("^[0-9]{10}$");
+		
+		var state=document.register.state.value;
+		var image=document.register.image.value
+		
+		if(!uname.match(run))
+		msg+="Name should contain only alphabets";
+		
+		if(!email.match(remail))
+		msg+="\nEmail should be of type\neg:abc@gmail.com";
+		
+		if(!phone.match(rphone))
+		msg+="\nphone number should be of 10 digits";
+		if(state.match('state'))
+			msg+="\nState can't be empty";
+		if(!image.includes(".jpg"))
+			msg+="\nImage should be of type .JPG";
+		
+		if(msg!="")
+		{
+		alert(msg);
+		return false;
+		}
+		document.register.action="reg.jsp";
+		return true;
+		}
+</script>
+  </head>
+  <body>
+    <div class="container">
+        <form method="post" action="" name="register" th:action="@{/createNewRecord}" th:object="${newEntry}" th:onClick="return validate()">
+            <div class="form-group col-xs-2">
+                <div class="col-xs-2">
+                  <label for="ex1">Name</label>
+                  <input class="form-control" type="text" th:field="*{name}" name="name">
+                </div>
+                <div class="col-xs-3">
+                  <label for="ex2">Email</label>
+                  <input class="form-control" type="text" th:field="*{email}" name="email">
+                </div>
+                <div class="col-xs-4">
+                  <label for="ex3">Mobile</label>
+                  <input class="form-control" type="text"th:field="*{phone}" name="phone">
+                </div>
+                <br>
+                <div class="col-xs-4">
+				<div class="input-group mb-3">
+				  <div class="input-group-prepend">
+				    <label class="input-group-text" for="inputGroupSelect01">State</label>
+				  </div>
+				  <select class="custom-select" name="state" th:field="*{state}" >
+				  	<option value="state">Select State</option>
+				  	<option value="Delhi">Delhi</option>
+				  	<option value="Andhra Pradesh">Andhra Pradesh</option>
+				  	<option value="J&K">J&K</option>
+				  	<option value="Uttar Pradesh">Uttar Pradesh</option>
+				    <option value="Telangana">Telangana</option>
+				    <option value="Kerala">Kerala</option>
+				    <option value="Karntaka">Karntaka</option>
+				  </select>
+				</div>
+                </div>
+                Skills
+                <br>
+                <div class="col-xs-4">
+				<input type="checkbox" name="skills" value="Java" th:field="*{skills}" >Java
+				<input type="checkbox" name="skills" value="JavaScript" th:field="*{skills}">JavaScript
+				<input type="checkbox" name="skills" value="Mysql" th:field="*{skills}">Mysql
+				<input type="checkbox" name="skills" value="Springboot" th:field="*{skills}">Springboot
+                </div>
+                <br>
+                Gender
+                <div class="col-xs-2">
+				Male<input type="radio" name="gender" value="male" th:field="*{gender}"/>
+				Female<input type="radio" name="gender" value="female" th:field="*{gender}"/> 
+                </div>
+                <br>
+                <div class="col-xs-2">
+				  <div class="form-group">
+				    <label for="exampleFormControlFile1">Upload Image</label>
+				    <input type="file" class="form-control-file" name="image" th:field="*{image}">
+				  </div>
+                </div>
+              </div>
+              <input type="hidden" id="id" th:field="*{id}">
+              <input type="submit" class="btn btn-primary" th:onClick=Validate()>
+              <input type="reset" class="btn btn-primary">
+          </form>
+    </div>
+  </body>
+</html>
