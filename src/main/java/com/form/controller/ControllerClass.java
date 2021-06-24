@@ -32,12 +32,12 @@ public class ControllerClass {
 	
 	
 	@RequestMapping(path = "/createNewRecord", method = RequestMethod.POST)
-	public String createNewEntry(NewUserEntry newEntry,Model model) 
+	public String createNewRecord(NewUserEntry newEntry,Model model) 
 	{
 	
 		//it will save the data into the database and return a object of that entry
 		NewUserEntry entry = repo.save(newEntry);
-		//for edit purpose we are adding the returned object of added database object to display html
+		//for edit purpose we are adding the returned object of database to display html
 		model.addAttribute("newEntry", entry);
 		return "display";
 	}

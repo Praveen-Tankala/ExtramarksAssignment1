@@ -8,19 +8,23 @@
 </head>
 <body>
 <div class="container" th:object="${newEntry}">
-	
-			<h5>Details saved successfully</h5>
-            Name: <span th:text=${newEntry.name}></span><br>
-            Email: <span th:text=${newEntry.email}></span><br>
-            Mobile: <span th:text=${newEntry.phone}></span><br>
-            State: <span th:text=${newEntry.state}></span><br>
-            Gender: <span th:text=${newEntry.gender}></span><br>
-            Skills: <span th:text=${newEntry.skills}></span><br>
-            Image: <span th:text=${newEntry.image}></span><br>
+
+
+
+
+			<h5>Details saved successfully</h5><br>
+            <h6>Name:&nbsp; <span th:text=${newEntry.name}></span></h6><br>
+            <h6>Email:&nbsp; <span th:text=${newEntry.email}></span></h6><br>
+            <h6>Mobile:&nbsp; <span th:text=${newEntry.phone}></span></h6><br>
+            <h6>State: &nbsp;<span th:text=${newEntry.state}></span></h6><br>
+            <h6>Gender:&nbsp; <span th:text=${newEntry.gender}></span></h6><br>
+            <h6>Skills:&nbsp; <span th:text=${newEntry.skills}></span></h6><br>
+            <h6>Image:&nbsp; <span th:text=${newEntry.image}></span></h6><br>
             
             
-           <p>Click here for edit:</p>
-             <a th:href="@{/edit/{id}(id=${newEntry.id})}" class="btn btn-primary"><button>Edit</button></a>
+             <a th:href="@{/edit/{id}(id=${newEntry.id})}" class="btn btn-primary">
+			 <label class="btn btn-primary" for="btn-check-2">Click Here to Edit</label>
+</a>
              
     </div>
 </body>
